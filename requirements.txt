@@ -1,0 +1,21 @@
+# Learning Mentor Note-Taking System Requirements
+
+# Required for environment variable loading
+python-dotenv >= 1.0.0
+
+# Standard Python 3 libraries (no installation required)
+# datetime, os, re, json, pathlib
+
+# Dependencies for LLM integration:
+openai >= 1.0.0
+anthropic >= 0.5.0
+ollama >= 0.1.0
+requests >= 2.28.0
+
+# Additional utilities
+tiktoken >= 0.5.0  # For token counting
+
+# Duplicate detection (optional but recommended)
+sentence-transformers >= 2.2.0  # Semantic similarity
+scikit-learn >= 1.0.0  # TF-IDF fallback
+numpy >= 1.21.0  # Required by above

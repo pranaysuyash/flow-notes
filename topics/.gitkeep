@@ -1,0 +1,2 @@
+# This file ensures the topics/ directory is tracked by git
+# User notes will be ignored via .gitignore, but the directory structure is preserved

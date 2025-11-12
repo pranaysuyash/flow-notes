@@ -1,0 +1,70 @@
+# Environment variables and API keys
+.env
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+
+# Type checking cache
+.mypy_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# User-generated content (not pushed to repo)
+# All documentation files
+docs/
+
+# User-generated notes (keep structure, ignore content)
+# Raw notes with timestamps
+topics/*/raw/*.md
+topics/*/raw/*.json
+
+# Old-style date-based notes
+topics/*/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
+
+# Generated learning guides
+topics/*/learning-guide.md
+
+# Daily summaries
+daily_notes/*.md
+
+# Comprehensive books
+complete-learning-book.md
+
+# Comments (if they exist)
+topics/*/comments/*.md
+
+# But keep the directory structure
+!topics/.gitkeep
+!daily_notes/.gitkeep
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Sentence transformers cache (for duplicate detection)
+.cache/
+.sentence_transformers/
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS files
+.DS_Store
+Thumbs.db
