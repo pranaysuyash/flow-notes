@@ -1,21 +1,93 @@
-# Learning Mentor Note-Taking System Requirements
+# FlowNotes - AI-Powered Note-Taking System Requirements
 
-# Required for environment variable loading
+# ============================================================
+# CORE DEPENDENCIES (Required)
+# ============================================================
+
+# Environment configuration
 python-dotenv >= 1.0.0
 
-# Standard Python 3 libraries (no installation required)
-# datetime, os, re, json, pathlib
-
-# Dependencies for LLM integration:
+# LLM Integration
 openai >= 1.0.0
 anthropic >= 0.5.0
 ollama >= 0.1.0
+google-generativeai >= 0.3.0
 requests >= 2.28.0
+tiktoken >= 0.5.0  # Token counting
 
-# Additional utilities
-tiktoken >= 0.5.0  # For token counting
+# Async support for parallel LLM calls
+aiohttp >= 3.9.0
+asyncio >= 3.4.3
 
-# Duplicate detection (optional but recommended)
+# ============================================================
+# CLI ENHANCEMENTS (v2.5)
+# ============================================================
+
+# Rich terminal UI
+rich >= 13.7.0  # Beautiful terminal formatting
+prompt-toolkit >= 3.0.43  # Interactive prompts
+
+# Progress tracking
+tqdm >= 4.66.0
+
+# Export formats
+markdown2 >= 2.4.0  # Markdown processing
+weasyprint >= 60.0  # PDF export
+genanki >= 0.13.0  # Anki flashcard export
+Pygments >= 2.17.0  # Syntax highlighting
+
+# Search functionality
+whoosh >= 2.7.4  # Full-text search
+rapidfuzz >= 3.6.0  # Fuzzy matching
+
+# ============================================================
+# AI & LEARNING FEATURES
+# ============================================================
+
+# Duplicate detection & semantic search
 sentence-transformers >= 2.2.0  # Semantic similarity
 scikit-learn >= 1.0.0  # TF-IDF fallback
 numpy >= 1.21.0  # Required by above
+
+# ============================================================
+# DESKTOP APP DEPENDENCIES (v3.0)
+# ============================================================
+
+# PySide6 (Qt for Python) - Uncomment when building desktop app
+# PySide6 >= 6.6.0
+# PySide6-Addons >= 6.6.0
+# qasync >= 0.24.0  # Async support for Qt
+
+# ============================================================
+# OPTIONAL: CLOUD SYNC & SECURITY
+# ============================================================
+
+# End-to-end encryption
+cryptography >= 41.0.0
+
+# File system monitoring
+watchdog >= 3.0.0
+
+# ============================================================
+# DEVELOPMENT & TESTING
+# ============================================================
+
+# Type checking
+mypy >= 1.8.0
+types-requests >= 2.31.0
+
+# Code quality
+flake8 >= 7.0.0
+pylint >= 3.0.0
+black >= 24.0.0
+isort >= 5.13.0
+
+# Testing
+pytest >= 7.4.0
+pytest-cov >= 4.1.0
+pytest-asyncio >= 0.23.0
+
+# ============================================================
+# NOTES
+# ============================================================
+# Standard library (no install needed): datetime, os, re, json, pathlib, sys

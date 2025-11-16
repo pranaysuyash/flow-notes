@@ -21,8 +21,7 @@ OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama2")  # or any local model you hav
 # Default to local processing if no API keys provided
 USE_LOCAL_PROCESSING = not bool(OPENAI_API_KEY)  # Set to False if API key is provided
 
-# Ollama/local models (optional)
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama2")  # or any local model you have installed
+# Ollama host configuration
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
 # Google Generative AI (optional)
