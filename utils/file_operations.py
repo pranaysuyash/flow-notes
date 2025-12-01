@@ -6,11 +6,22 @@ import os
 from pathlib import Path
 import datetime
 import re
+import hashlib
 
 
-def sanitize_topic_name(topic):
-    """Sanitize topic name (convert to lowercase, replace spaces with hyphens)"""
+def sanitize_topic_name(topic, max_length=80):
+    """Sanitize topic name and keep it filesystem-safe and reasonably short"""
     topic = re.sub(r'[^\w\s-]', '', topic).strip().lower().replace(' ', '-')
+    topic = re.sub(r'-{2,}', '-', topic).strip('-')
+
+    if not topic:
+        return "general"
+
+    if len(topic) > max_length:
+        # Preserve readability while avoiding extremely long paths
+        hash_suffix = hashlib.sha1(topic.encode("utf-8")).hexdigest()[:8]
+        topic = f"{topic[: max_length - 9].rstrip('-')}-{hash_suffix}"
+
     return topic
 
 

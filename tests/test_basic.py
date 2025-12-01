@@ -29,6 +29,11 @@ def test_sanitize_topic_name():
         
         result = sanitize_topic_name("Data Science 101")
         assert result == "data-science-101", f"Expected 'data-science-101', got '{result}'"
+
+        long_input = "using opencv-contrib-python reading images using imread while for videos need to use videocapture and frame by frame reading"
+        result = sanitize_topic_name(long_input)
+        assert len(result) <= 80, "Expected long topic names to be truncated for filesystem safety"
+        assert result.startswith("using-opencv-contrib-python"), "Expected truncation to preserve readable prefix"
         
         print("✅ Topic sanitization tests passed")
     except Exception as e:

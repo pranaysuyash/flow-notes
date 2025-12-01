@@ -2,7 +2,7 @@
 
 # 🌊 FlowNotes
 
-### *AI-Powered Terminal Note-Taking for Deep Learning*
+### _AI-Powered Terminal Note-Taking for Deep Learning_
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -42,18 +42,21 @@ FlowNotes is a **terminal-first, AI-powered note-taking system** that transforms
 ### Installation
 
 1. **Clone the repository:**
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/flow-notes.git
 cd flow-notes
 ```
 
 2. **Run the setup script:**
+
 ```bash
 chmod +x setup.sh
 ./setup.sh
 ```
 
 This will:
+
 - Create required directories (`topics/`, `daily_notes/`, `docs/`)
 - Set up Python virtual environment
 - Install all dependencies
@@ -62,11 +65,13 @@ This will:
 3. **Configure API keys:**
 
 Edit `.env` file with your API keys:
+
 ```bash
 nano .env
 ```
 
 Add your keys:
+
 ```env
 OPENAI_API_KEY=your_key_here
 ANTHROPIC_API_KEY=your_key_here  # optional
@@ -77,6 +82,7 @@ DEFAULT_LLM_PROVIDER=ollama
 ```
 
 4. **Start taking notes:**
+
 ```bash
 ./start_notes.sh
 ```

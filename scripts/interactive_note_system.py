@@ -292,15 +292,34 @@ class InteractiveNoteTakingSystem:
             print(f"Existing topics: {', '.join(existing_topics)}")
         
         print("Examples: 'machine-learning', 'web-development', 'programming', 'data-science'")
-        topic = input("Enter topic (or press Enter for automatic detection): ").strip()
+        topic_input = input("Enter topic (or press Enter for automatic detection): ").strip()
         
-        if not topic:
+        if not topic_input:
             # Automatically detect topic based on content with LLM assistance
             return self.identify_topic_with_llm()
+
+        if self._looks_like_note_input(topic_input):
+            print("Looks like you entered a full note. I'll auto-detect the topic and save this as your first note.")
+            self._pending_first_note = topic_input
+            detected_topic = self._classify_topic_from_text(topic_input)
+            print(f"Using topic: '{detected_topic}'")
+            return detected_topic
         
         # Sanitize topic name (convert to lowercase, replace spaces with hyphens)
-        topic = self._sanitize_topic(topic)
+        topic = self._sanitize_topic(topic_input)
         return topic
+
+    def _looks_like_note_input(self, text):
+        """Heuristic to detect when the user pasted a full note instead of a short topic"""
+        word_count = len(text.split())
+        has_sentence_punctuation = any(p in text for p in (".", "?", "!", "\n"))
+        return len(text) > 80 or word_count > 12 or has_sentence_punctuation
+
+    def _classify_topic_from_text(self, text):
+        """Central helper to classify a topic from free text"""
+        if self.primary_llm:
+            return self.classify_topic_with_llm(text)
+        return self.classify_topic_with_local_logic(text)
     
     def identify_topic_with_llm(self):
         """Use local logic or LLM to identify topic from user's first note"""
@@ -313,12 +332,7 @@ class InteractiveNoteTakingSystem:
             print("No note provided, defaulting to 'general' topic.")
             return 'general'
         
-        if self.primary_llm:
-            # Use LLM for topic classification
-            topic = self.classify_topic_with_llm(first_note)
-        else:
-            # Use local classification logic
-            topic = self.classify_topic_with_local_logic(first_note)
+        topic = self._classify_topic_from_text(first_note)
         
         print(f"Based on your note, I've identified the topic as: '{topic}'")
         
